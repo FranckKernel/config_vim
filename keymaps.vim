@@ -9,6 +9,73 @@ if has('unix')
 endif
 
 
+" -----------------------------
+" Run current buffer (F4)
+" -----------------------------
+function! RunCurrentBuffer()
+    let l:filename = expand('%:p')
+    let l:ext = expand('%:e')
+    let l:cmd = ''
+
+    if &filetype ==# 'python' || l:ext ==# 'py'
+        let l:cmd = 'python3 ' . l:filename
+    elseif &filetype ==# 'javascript' || l:ext ==# 'js'
+        let l:cmd = 'node ' . l:filename
+    elseif l:ext ==# 'c'
+        let l:cmd = 'gcc ' . l:filename . ' -o /tmp/tmp_exec && /tmp/tmp_exec'
+    elseif l:ext ==# 'cpp'
+        let l:cmd = 'g++ ' . l:filename . ' -o /tmp/tmp_exec && /tmp/tmp_exec'
+    elseif &filetype ==# 'sh' || l:ext ==# 'sh'
+        let l:cmd = 'bash ' . l:filename
+    else
+        echo 'No runner configured for this filetype/extension: ' . l:ext
+        return
+    endif
+
+    " Open a new split terminal and run
+    execute 'split | terminal ' . l:cmd
+endfunction
+
+nnoremap <F4> :call RunCurrentBuffer()<CR>
+
+" -----------------------------
+" Run build.shj (F5)
+" -----------------------------
+nnoremap <F5> :!./build.shj<CR>
+
+" -----------------------------
+" Toggle true/false under cursor (<leader>ni)
+" -----------------------------
+function! ToggleTrueFalse()
+    let l:word = expand('<cword>')
+
+    if l:word =~? '^true$'
+        if l:word ==# 'TRUE'
+            let l:new = 'FALSE'
+        elseif l:word ==# 'True'
+            let l:new = 'False'
+        else
+            let l:new = 'false'
+        endif
+    elseif l:word =~? '^false$'
+        if l:word ==# 'FALSE'
+            let l:new = 'TRUE'
+        elseif l:word ==# 'False'
+            let l:new = 'True'
+        else
+            let l:new = 'true'
+        endif
+    else
+        return
+    endif
+
+    " Replace word under cursor
+    execute 'normal! ciw' . l:new
+endfunction
+
+nnoremap <leader>ni :call ToggleTrueFalse()<CR>
+
+
 " ---------------- Exit Insert/Visual Mode
 inoremap jk <Esc>
 inoremap JK <Esc>
