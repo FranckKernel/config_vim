@@ -36,12 +36,12 @@ function! RunCurrentBuffer()
     execute 'split | terminal ' . l:cmd
 endfunction
 
-nnoremap <F4> :call RunCurrentBuffer()<CR>
+nnoremap <F3> :call RunCurrentBuffer()<CR>
 
 " -----------------------------
-" Run build.shj (F5)
+" Run build.shj (F6)
 " -----------------------------
-nnoremap <F5> :!./build.shj<CR>
+nnoremap <F6> :!./build.shj<CR>
 
 " -----------------------------
 " Toggle true/false under cursor (<leader>ni)
@@ -108,7 +108,7 @@ vnoremap K L
 vnoremap H I
 
 " ---------------- Page Navigation
-nnoremap <CR> o<Esc>
+" nnoremap <CR> o<Esc>
 
 " map Ctrl+d to scroll down 1/2 screen. Ctrl+e up 1/2 screen
 nnoremap <C-d> <C-d>

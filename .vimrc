@@ -24,6 +24,9 @@ Plug 'prabirshrestha/asyncomplete-lsp.vim'
 
 Plug 'sheerun/vim-polyglot'
 
+Plug 'puremourning/vimspector'
+Plug 'dense-analysis/ale'
+
 call plug#end()
 
 
@@ -35,3 +38,11 @@ source $HOME/.config/vim/plugins/buffer_airline.vim
 source $HOME/.config/vim/plugins/telescope_equivalent.vim
 source $HOME/.config/vim/plugins/lsp.vim
 source $HOME/.config/vim/plugins/lsp_autocomplete.vim
+
+" New Features, Linting, dap, and pseudo dap
+source $HOME/.config/vim/plugins/ale_linting.vim
+source $HOME/.config/vim/plugins/pseudo_debug.vim
+source $HOME/.config/vim/plugins/vimspector_debuger.vim
+
+
+
