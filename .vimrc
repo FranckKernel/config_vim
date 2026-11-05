@@ -8,6 +8,7 @@ Plug 'preservim/nerdcommenter'
 
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'catppuccin/vim', { 'as': 'catppuccin' }   " 
 
 " Telescope Equivalent
 " Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
